@@ -18,28 +18,68 @@ let direction = 'up'
 let nextDirection = 'up'
 let score = 0
 let gameOver = false
-let header = "⇑"
+let header = "^"
 let speed = 150
 let gameStarted = false
+let nowDirection = ''
 
 document.addEventListener('keydown', (e) => {
     if (!gameStarted) return;
     
-    if (e.key === 'ArrowUp' && direction !== 'down') {
+    
+    if (e.key === 'w'){
+        nowDirection = 'ArrowUp'
+    }
+
+    if (e.key === 's'){
+        nowDirection = 'ArrowDown'
+    }
+
+    if (e.key === 'd'){
+        nowDirection = 'ArrowRight'
+    }
+
+    if (e.key === 'a'){
+        nowDirection = 'ArrowLeft'
+    }
+
+    if (e.key === 'ArrowUp'){
+        nowDirection = 'ArrowUp'
+    }
+
+    if (e.key === 'ArrowDown'){
+        nowDirection = 'ArrowDown'
+    }
+
+    if (e.key === 'ArrowRight'){
+        nowDirection = 'ArrowRight'
+    }
+
+    if (e.key === 'ArrowLeft'){
+        nowDirection = 'ArrowLeft'
+    }
+
+
+
+
+
+    
+    if (nowDirection === 'ArrowUp' && direction !== 'down') {
         nextDirection = 'up'
-        header = '⇑'
+        header = '^'
     }
-    if (e.key === 'ArrowDown' && direction !== 'up') {
+  
+    if (nowDirection === 'ArrowDown' && direction !== 'up') {
         nextDirection = 'down'
-        header = '⇓'
+        header = 'v'
     }
-    if (e.key === 'ArrowRight' && direction !== 'left') {
+    if (nowDirection === 'ArrowRight' && direction !== 'left') {
         nextDirection = 'right'
-        header = '⇒'
+        header = '>'
     }
-    if (e.key === 'ArrowLeft' && direction !== 'right') {
+    if (nowDirection === 'ArrowLeft' && direction !== 'right') {
         nextDirection = 'left'
-        header = '⇐'
+        header = '<'
     }
 })
 
@@ -69,7 +109,7 @@ const mainLoop = () => {
         let frame = document.getElementById("screen")
         if (frame) {
             frame.style.cursor = "pointer"
-            frame.onclick = () => {
+            frame.onclick = (e) => {
                 snake = [{x : 10 , y : 10}]
                 food = {x : 5 , y : 5}
                 direction = 'up'
@@ -87,7 +127,6 @@ const mainLoop = () => {
     }
 
     if (gameOver) {
-        // Draw game over screen
         clear()
         print(" _________              __           ")
         print(" /   _____/ ____ _____  |  | __ ____  ")
@@ -217,5 +256,4 @@ const mainLoop = () => {
   }
 }
 
-// Start the game with initial screen
 mainLoop()
