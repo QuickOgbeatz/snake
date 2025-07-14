@@ -18,7 +18,7 @@ let direction = 'up'
 let nextDirection = 'up'
 let score = 0
 let gameOver = false
-let header = "^"
+let header = "⇑"
 let speed = 150
 let gameStarted = false
 let nowDirection = ''
@@ -66,20 +66,20 @@ document.addEventListener('keydown', (e) => {
     
     if (nowDirection === 'ArrowUp' && direction !== 'down') {
         nextDirection = 'up'
-        header = '^'
+        header = '⇑'
     }
   
     if (nowDirection === 'ArrowDown' && direction !== 'up') {
         nextDirection = 'down'
-        header = 'v'
+        header = '⇓'
     }
     if (nowDirection === 'ArrowRight' && direction !== 'left') {
         nextDirection = 'right'
-        header = '>'
+        header = '⇒'
     }
     if (nowDirection === 'ArrowLeft' && direction !== 'right') {
         nextDirection = 'left'
-        header = '<'
+        header = '⇐'
     }
 })
 
