@@ -198,7 +198,7 @@ const mainLoop = () => {
         snake.unshift(head)
         if (head.x === food.x && head.y === food.y) {
             score += 1;
-            speed = speed * 0.9
+            speed = speed * 0.95
             let validPosition = false
             while (!validPosition) {
                 food = { 
